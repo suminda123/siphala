@@ -2,7 +2,7 @@ extends ../layouts/default
 
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-		h2: a(href='/news/post/' + post.slug)= post.title
+		h2: a.fontcolor(href='/news/post/' + post.slug)= post.title
 		p.lead.text-muted Posted 
 			if post.publishedDate
 				| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
@@ -20,13 +20,17 @@ mixin post(post)
 			img(src=post._.image.fit(160,160)).img.pull-right
 		p!= post.content.brief
 		if post.content.extended
-			p.read-more: a(href='/news/post/' + post.slug) Read more...
-
-block intro
-	.container
-		h1= data.category ? data.category.name : 'news'
+			p.read-more: a.fontcolor(href='/news/post/' + post.slug) Read more...
 
 block content
+	header.intro-header(style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/images/news-bg.jpg')")
+		.container
+			.row
+				.col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+					.site-heading
+						h2= data.category ? data.category.name : 'Siphala News'
+						hr.small
+						span.subheading Join with us for this worthy cause
 	.container: .row
 		.col-sm-8.col-md-9
 			if filters.category && !data.category

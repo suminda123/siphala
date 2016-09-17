@@ -1,10 +1,16 @@
 extends ../layouts/default
-
-block intro
-	.container
-		h1 Gallery
 	
 block content
+	header.intro-header(style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/images/gallery-bg.jpg')")
+		.container
+			.row
+				.col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+					.site-heading
+						h2
+							| Image Gallery
+						hr.small
+						span.subheading Join with us for this worthy cause
+						
 	.container
 		if galleries.length
 			each gallery in galleries
